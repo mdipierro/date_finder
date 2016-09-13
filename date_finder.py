@@ -1,4 +1,5 @@
 import re
+import sys
 import datetime
 import pytz
 import unittest
@@ -135,4 +136,8 @@ class DateFinderTestCase(unittest.TestCase):
         self.assertEqual(output, EXPECTED_OUTPUT)
 
 if __name__ == '__main__':
-    unittest.main()
+    if len(sys.argv)>1:
+        fixer = DateFinder()
+        print fixer.find_dates(' '.join(sys.argv[1:]))
+    else:
+        unittest.main()
